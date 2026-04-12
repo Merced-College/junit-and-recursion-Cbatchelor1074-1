@@ -3,7 +3,7 @@
 // April 12, 2026
 
 public class RecursionPractice {
-    // Counts occurrences of the number 8 recursively
+    // Counts occurences of the number 8 recursively
     public static int count8(int n) {
         if (n == 0) {
             return 0;
@@ -36,7 +36,7 @@ public class RecursionPractice {
     }
 
     // Counts "hi" but ignores ones that have an 'x' immediately before them
-    public static int countHi2(string str) {
+    public static int countHi2(String str) {
         if (str.length() < 2) {
             return 0;
         }
@@ -50,5 +50,30 @@ public class RecursionPractice {
         }
 
         return countHi2(str.substring(1));
+    }
+
+    // Counts non-overlapping occurences of sub in str
+    public static int strCount(String str, String sub) {
+        if (str.length() < sub.length()) {
+            return 0;
+        }
+
+        if (str.substring(0, sub.length()).equals(sub)) {
+            return 1 + strCount(str.substring(sub.length()), sub);
+        }
+
+        return strCount(str.substring(1), sub);
+    }
+
+    // Removes adjacent duplicate characters
+    public static String stringClean(String str) {
+        if (str.length() <= 1) {
+            return str;
+        }
+
+        if (str.charAt(0) == str.charAt(1)) {
+            return stringClean(str.substring(1));
+        }
+        return str.charAt(0) + stringClean(str.substring(1));
     }
 }
